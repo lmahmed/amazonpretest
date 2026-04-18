@@ -5,7 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="theme-color" content="#09090f">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <title>Amazon English Test Prep</title>
+
+  <!-- SEO -->
+  <title>Amazon Pre-Hire English Test Practice | Warehouse & Fulfillment</title>
+  <meta name="description" content="Practice the Amazon pre-hire English assessment for warehouse positions including fulfillment centers, sortation centers, and delivery stations. Covers all 3 sections: sentence repetition, appropriate response, and story retelling.">
+  <meta name="keywords" content="Amazon pre-hire test, Amazon English test, Amazon warehouse English, Amazon fulfillment center test, Amazon sortation center, Amazon delivery station, Amazon assessment practice, pre-hire English assessment, sentence repetition test, story retelling practice">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Amazon Pre-Hire English Test Practice">
+  <meta property="og:description" content="Practice the Amazon pre-hire English assessment for warehouse positions. Covers sentence repetition, appropriate response, and story retelling.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="apple-touch-icon" href="images/favicon.svg">
+
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -27,7 +42,26 @@
         <strong>Disclaimer:</strong> This is an unofficial practice tool created for self-study purposes. It does not guarantee passing the Amazon English assessment or securing employment. Results may vary.
       </div>
 
-      <!-- Audio & Mic checks -->
+      <div style="text-align:center;margin-bottom:16px;">
+        <button onclick="togglePrivacy()" id="privacy-toggle" style="background:none;border:none;color:var(--muted);font-family:var(--font-body);font-size:12px;cursor:pointer;text-decoration:underline;text-underline-offset:3px;">View Privacy Notice</button>
+      </div>
+      <div id="privacy-notice" style="display:none;margin-bottom:16px;">
+        <div class="disclaimer" style="border-color:rgba(62,207,207,0.18);background:rgba(62,207,207,0.05);">
+          <strong style="color:var(--accent2);">Privacy:</strong> This site does not store or collect any of your audio or personal data. Speech-to-text transcription is powered by your browser's built-in Web Speech API — in Chrome, this transmits your voice to Google's servers for processing, subject to <a href="https://policies.google.com/privacy" target="_blank" style="color:var(--accent2);">Google's Privacy Policy</a>. By using this tool you acknowledge that your voice may be sent to and processed by your browser vendor.
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--muted);text-align:center;margin-bottom:20px;line-height:1.6;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;">
+        🌐 Best experienced on
+        <span style="display:inline-flex;align-items:center;gap:5px;color:var(--text);font-weight:600;">
+          <img src="images/chrome.png" alt="Chrome" style="width:18px;height:18px;object-fit:contain;vertical-align:middle;"> Chrome
+        </span>
+        or
+        <span style="display:inline-flex;align-items:center;gap:5px;color:var(--text);font-weight:600;">
+          <img src="images/edge.png" alt="Edge" style="width:18px;height:18px;object-fit:contain;vertical-align:middle;"> Edge
+        </span>
+        — other browsers may not support speech recognition.
+      </p>
+
       <div class="test-checks">
         <div style="display:flex;flex-direction:column;gap:8px;flex:1;">
           <button class="check-btn" id="btn-test-audio">
@@ -181,7 +215,7 @@
     </div>
   </div>
 
-  <div id="dev-skip-bar" style="position:fixed;bottom:0;left:0;right:0;background:rgba(0,0,0,0.85);backdrop-filter:blur(8px);border-top:1px solid #333;padding:10px 16px;display:flex;gap:8px;align-items:center;z-index:9999;">
+  <div id="dev-skip-bar" style="display:none;position:fixed;bottom:0;left:0;right:0;background:rgba(0,0,0,0.85);backdrop-filter:blur(8px);border-top:1px solid #333;padding:10px 16px;flex-direction:row;gap:8px;align-items:center;z-index:9999;">
     <span style="font-size:11px;color:#666;font-family:monospace;font-weight:700;letter-spacing:1px;flex-shrink:0">DEV</span>
     <button onclick="devSkip('landing')" style="padding:6px 12px;border-radius:6px;border:1px solid #444;background:#1a1a1a;color:#aaa;font-size:12px;cursor:pointer;font-family:monospace;">Landing</button>
     <button onclick="devSkip('mc')" style="padding:6px 12px;border-radius:6px;border:1px solid #444;background:#1a1a1a;color:#aaa;font-size:12px;cursor:pointer;font-family:monospace;">MC</button>

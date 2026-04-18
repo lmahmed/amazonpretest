@@ -232,7 +232,7 @@ el('btn-test-mic').addEventListener('click', () => {
 
 window.confirmMic = async function(passed) {
   if (passed) {
-    // Release stream now that we're done with mic test
+    // Release mic test stream — no longer needed
     if (micTestStream) { micTestStream.getTracks().forEach(t => t.stop()); micTestStream = null; }
     el('mic-confirm').style.display = 'none';
     const btn = el('btn-test-mic');
@@ -242,7 +242,6 @@ window.confirmMic = async function(passed) {
     micChecked = true;
     checkReady();
   } else {
-    // Retry — stream stays open, just run again immediately
     runMicTest();
   }
 };
@@ -551,6 +550,8 @@ async function playSentenceAudio(sentence) {
   el('playing-label').classList.add('show');
   el('playing-label').textContent = 'Listen carefully...';
 
+  warmMicStream(); // start warming while audio plays
+
   await speak(sentence);
 
   pb.classList.remove('playing');
@@ -567,6 +568,9 @@ async function startSentenceRecording() {
   el('visualizer-label-text').textContent = 'Opening mic...';
   el('visualizer-wrap').classList.add('show');
   el('done-btn').classList.add('show');
+  el('timer-label-text').textContent = 'Time to speak';
+  state.timerSeconds = 10;
+  el('timer-num').textContent = state.timerSeconds;
   state.isRecording = true;
   state.transcript = '';
   finalTranscriptBuffer = '';
@@ -577,15 +581,36 @@ async function startSentenceRecording() {
     startVisualizer(),
     new Promise(res => {
       startSpeechRecognition();
-      setTimeout(res, 100); // give SR a moment to init
+      setTimeout(res, 100);
     })
   ]);
 
   el('visualizer-label-text').textContent = 'Speak now — repeat the sentence';
+  el('timer-wrap').classList.add('show');
+  resetTimerBar();
+  void el('timer-track').offsetWidth;
+  el('timer-track').classList.add('run-10');
+
+  // Auto-stop after 10 seconds
+  (async () => {
+    while (state.timerSeconds > 0 && state.isRecording) {
+      await pause(1000);
+      if (!state.isRecording) break;
+      state.timerSeconds--;
+      el('timer-num').textContent = state.timerSeconds;
+    }
+    if (state.isRecording) {
+      state.isRecording = false;
+      await stopRecording();
+      revealSentence();
+    }
+  })();
 }
 
 el('done-btn').addEventListener('click', async () => {
   if (!state.isRecording) return;
+  state.isRecording = false;
+  el('timer-wrap').classList.remove('show');
   await stopRecording();
   revealSentence();
 });
@@ -593,6 +618,7 @@ el('done-btn').addEventListener('click', async () => {
 function revealSentence() {
   el('visualizer-wrap').classList.remove('show');
   el('done-btn').classList.remove('show');
+  el('timer-wrap').classList.remove('show');
 
   el('reveal-wrap').innerHTML = `
     <div class="reveal-card">
@@ -681,6 +707,7 @@ async function playStoryAudio(story) {
   await speak('The story will now be repeated.');
   await pause(600);
 
+  warmMicStream(); // warm during second telling — plenty of time before recording starts
   el('playing-label').textContent = 'Second telling...';
   await speak(story.text);
 
@@ -801,9 +828,22 @@ let questionRecordingChunks = [];
 let questionRecordingMime = '';
 let lastRecordingBlob = null;
 
+// Warm the mic stream in the background while audio is playing
+// so it's ready the moment recording needs to start
+function warmMicStream() {
+  if (questionMicStream && questionMicStream.getTracks().some(t => t.readyState === 'live')) return;
+  navigator.mediaDevices.getUserMedia({ audio: true })
+    .then(stream => { questionMicStream = stream; })
+    .catch(e => console.warn('Mic warm-up failed:', e));
+}
+
 async function startVisualizer() {
   try {
-    questionMicStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    // Stream should already be warm from warmMicStream() — open fresh only as fallback
+    if (!questionMicStream || questionMicStream.getTracks().every(t => t.readyState === 'ended')) {
+      questionMicStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    }
+
     questionRecordingMime = ['audio/webm;codecs=opus', 'audio/webm', 'audio/ogg;codecs=opus', 'audio/mp4']
       .find(t => MediaRecorder.isTypeSupported(t)) || '';
 
@@ -907,7 +947,7 @@ async function stopVisualizer() {
   }
   questionMicRecorder = null;
 
-  // Close stream fully — this turns off the browser mic indicator
+  // Close stream after each question — warmMicStream() will reopen for next question
   if (questionMicStream) {
     questionMicStream.getTracks().forEach(t => t.stop());
     questionMicStream = null;
@@ -917,6 +957,18 @@ async function stopVisualizer() {
   if (canvas) {
     const ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+}
+
+// Called once at the very end of the test to fully release the mic
+function releaseMicStream() {
+  if (questionMicStream) {
+    questionMicStream.getTracks().forEach(t => t.stop());
+    questionMicStream = null;
+  }
+  if (micTestStream) {
+    micTestStream.getTracks().forEach(t => t.stop());
+    micTestStream = null;
   }
 }
 
@@ -1004,6 +1056,7 @@ async function stopRecording() {
 
 // ─── RESULTS SCREEN ───────────────────────────────────────────────
 function showResults() {
+  releaseMicStream();
   el('result-mc-score').textContent   = state.mcScore;
   el('result-mc-total').textContent   = `out of ${state.mcSet.length}`;
   el('result-sent-total').textContent = `${state.sentenceSet.length} done`;
@@ -1018,13 +1071,29 @@ function showResults() {
   el('results-emoji').textContent = emoji;
   el('results-msg').textContent = msg;
 
+  // Increment completion counter in Firestore
+  fetch('https://firestore.googleapis.com/v1/projects/prehiretest-58208/databases/(default)/documents:commit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      writes: [{
+        transform: {
+          document: 'projects/prehiretest-58208/databases/(default)/documents/stats/global',
+          fieldTransforms: [{
+            fieldPath: 'completions',
+            increment: { integerValue: 1}
+          }]
+        }
+      }]
+    })
+  }).catch(() => {}); // fail silently — don't break the results screen
+
   showScreen('screen-results');
 }
 
 el('btn-retake-new').addEventListener('click', () => startTest());
 
 el('btn-retake-same').addEventListener('click', () => {
-  // Reset indexes but keep same sets from last test
   state.section       = 0;
   state.mcScore       = 0;
   state.mcTotal       = 0;
@@ -1064,6 +1133,14 @@ window.devSkip = function(section) {
     showResults();
   }
 };
+window.togglePrivacy = function() {
+  const notice = el('privacy-notice');
+  const btn = el('privacy-toggle');
+  const isHidden = notice.style.display === 'none';
+  notice.style.display = isHidden ? 'block' : 'none';
+  btn.textContent = isHidden ? 'Hide Privacy Notice' : 'View Privacy Notice';
+};
+
 function pause(ms) { return new Promise(res => setTimeout(res, ms)); }
 
 // ─── INIT ─────────────────────────────────────────────────────────

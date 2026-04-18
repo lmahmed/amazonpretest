@@ -487,6 +487,9 @@ body::after {
 .timer-track.run-8::after {
   animation: drain 8s linear forwards;
 }
+.timer-track.run-10::after {
+  animation: drain 10s linear forwards;
+}
 .timer-track.run-30::after {
   animation: drain 30s linear forwards;
 }
