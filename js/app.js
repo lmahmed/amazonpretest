@@ -803,7 +803,6 @@ let lastRecordingBlob = null;
 
 async function startVisualizer() {
   try {
-    // Always open a fresh stream — close it in stopVisualizer so browser mic indicator turns off
     questionMicStream = await navigator.mediaDevices.getUserMedia({ audio: true });
     questionRecordingMime = ['audio/webm;codecs=opus', 'audio/webm', 'audio/ogg;codecs=opus', 'audio/mp4']
       .find(t => MediaRecorder.isTypeSupported(t)) || '';
@@ -820,7 +819,6 @@ async function startVisualizer() {
     state.analyser.fftSize = 64;
     source.connect(state.analyser);
 
-    // Fresh recorder for clean audio capture
     questionRecordingChunks = [];
     lastRecordingBlob = null;
     questionMicRecorder = new MediaRecorder(
@@ -853,7 +851,6 @@ function drawVisualizer() {
     ctx.clearRect(0, 0, W, H);
 
     if (!state.analyser || !state.isRecording) {
-      // Draw flat idle bars
       const barCount = 24;
       const barW = Math.floor(W / barCount) - 2;
       for (let i = 0; i < barCount; i++) {
@@ -877,13 +874,10 @@ function drawVisualizer() {
       const barH = Math.max(4, value * H * 0.85);
       const x = i * (barW + 2);
       const y = (H - barH) / 2;
-
-      // Color gradient based on height
       const alpha = 0.4 + value * 0.6;
       ctx.fillStyle = value > 0.6
         ? `rgba(245,166,35,${alpha})`
         : `rgba(62,207,207,${alpha})`;
-
       ctx.beginPath();
       ctx.roundRect(x, y, barW, barH, 3);
       ctx.fill();
