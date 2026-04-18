@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#09090f">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>Amazon English Test Prep</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════
+       SCREEN 1: LANDING
+  ══════════════════════════════════════════════════ -->
+  <div id="screen-landing" class="screen">
+    <div class="landing-inner">
+
+      <div class="logo-mark">📦</div>
+
+      <h1 class="landing-title">
+        English Test<br><span>Practice</span>
+      </h1>
+      <p class="landing-sub">Prepare for the Amazon pre-hire English assessment</p>
+
+      <div class="disclaimer">
+        <strong>Disclaimer:</strong> This is an unofficial practice tool created for self-study purposes. It does not guarantee passing the Amazon English assessment or securing employment. Results may vary.
+      </div>
+
+      <!-- Audio & Mic checks -->
+      <div class="test-checks">
+        <div style="display:flex;flex-direction:column;gap:8px;flex:1;">
+          <button class="check-btn" id="btn-test-audio">
+            <span class="icon">🔊</span>
+            <span class="check-label">Test Audio</span>
+          </button>
+          <div id="audio-confirm" style="display:none;flex-direction:column;gap:6px;"></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;flex:1;">
+          <button class="check-btn" id="btn-test-mic">
+            <span class="icon">🎤</span>
+            <span class="check-label">Test Mic</span>
+          </button>
+          <div id="mic-confirm" style="display:none;flex-direction:column;gap:6px;"></div>
+        </div>
+      </div>
+
+      <button class="start-btn" id="start-btn">Start Test →</button>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════
+       SCREEN 2: SECTION INTRO
+  ══════════════════════════════════════════════════ -->
+  <div id="screen-intro" class="screen">
+    <div style="flex:1;display:flex;align-items:center;justify-content:center;padding:40px 20px;">
+      <div class="intro-inner">
+
+        <div class="section-badge">
+          <span class="dot"></span>
+          <span id="intro-badge">Part 1 of 3</span>
+        </div>
+
+        <h2 class="intro-title" id="intro-title">Choose a Response</h2>
+        <p class="intro-desc" id="intro-desc"></p>
+
+        <div class="intro-rules" id="intro-rules"></div>
+
+        <button class="next-btn" id="intro-next-btn">Begin Part 1</button>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════
+       SCREEN 3: QUESTION
+  ══════════════════════════════════════════════════ -->
+  <div id="screen-question" class="screen">
+
+    <!-- Header -->
+    <div class="q-header">
+      <span class="q-section-label" id="q-section-label">Choose a Response</span>
+      <span class="q-counter" id="q-counter">1 / 6</span>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="progress-track">
+      <div class="progress-fill" id="q-progress" style="width:0%"></div>
+    </div>
+
+    <!-- Body -->
+    <div class="q-body">
+
+      <!-- Play button -->
+      <div class="play-wrap" id="play-wrap">
+        <button class="play-btn" id="play-btn">▶</button>
+        <span class="play-hint" id="play-hint">Tap to begin</span>
+        <span class="playing-label" id="playing-label">Playing...</span>
+      </div>
+
+      <!-- MC Choices (shown after audio) -->
+      <div class="choices-wrap" id="choices-wrap"></div>
+
+      <!-- Timer bar (MC + Story) -->
+      <div class="timer-wrap" id="timer-wrap">
+        <div class="timer-label">
+          <span id="timer-label-text">Time remaining</span>
+          <span class="timer-num" id="timer-num">8</span>
+        </div>
+        <div class="timer-track" id="timer-track"></div>
+      </div>
+
+      <!-- Visualizer (Sentence + Story recording) -->
+      <div class="visualizer-wrap" id="visualizer-wrap">
+        <div class="visualizer-label">
+          <span class="rec-dot"></span>
+          <span id="visualizer-label-text">Speak now</span>
+        </div>
+        <canvas id="visualizer-canvas" width="440" height="64"></canvas>
+      </div>
+
+      <!-- Done button (Sentence only) -->
+      <button class="done-btn" id="done-btn">✓ Done Speaking</button>
+
+      <!-- Reveal section -->
+      <div class="reveal-wrap" id="reveal-wrap"></div>
+
+      <!-- Next button -->
+      <button class="q-next-btn" id="q-next-btn">Next →</button>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════
+       SCREEN 4: RESULTS
+  ══════════════════════════════════════════════════ -->
+  <div id="screen-results" class="screen">
+    <div style="flex:1;display:flex;align-items:center;justify-content:center;padding:40px 20px;">
+      <div class="results-inner">
+
+        <div class="results-emoji" id="results-emoji">🌟</div>
+        <h2 class="results-title">Test Complete!</h2>
+        <p class="results-sub" id="results-msg">Great work — keep practicing!</p>
+
+        <div class="score-grid">
+          <div class="score-card">
+            <div class="sc-icon">💬</div>
+            <div class="sc-label">MC Score</div>
+            <div class="sc-value" id="result-mc-score">0</div>
+            <div class="sc-total" id="result-mc-total">out of 6</div>
+          </div>
+          <div class="score-card">
+            <div class="sc-icon">🎤</div>
+            <div class="sc-label">Sentences</div>
+            <div class="sc-value" style="font-size:16px;padding-top:4px" id="result-sent-total">8 done</div>
+            <div class="sc-total">self-assessed</div>
+          </div>
+          <div class="score-card">
+            <div class="sc-icon">📖</div>
+            <div class="sc-label">Stories</div>
+            <div class="sc-value" style="font-size:16px;padding-top:4px" id="result-story-total">2 done</div>
+            <div class="sc-total">self-assessed</div>
+          </div>
+        </div>
+
+        <div class="results-note">
+          Sentences and stories are <strong>self-assessed</strong> — compare what you said against the original and the key point questions to judge how well you did.
+        </div>
+
+        <div class="disclaimer" style="margin-bottom:20px">
+          <strong>Reminder:</strong> This tool is for practice only and does not guarantee any results on the actual Amazon assessment.
+        </div>
+
+        <div class="retake-btns">
+          <button class="retake-btn primary" id="btn-retake-new">🎯 New Test (Random Questions)</button>
+          <button class="retake-btn secondary" id="btn-retake-same">🔁 Retake Same Test</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="dev-skip-bar" style="position:fixed;bottom:0;left:0;right:0;background:rgba(0,0,0,0.85);backdrop-filter:blur(8px);border-top:1px solid #333;padding:10px 16px;display:flex;gap:8px;align-items:center;z-index:9999;">
+    <span style="font-size:11px;color:#666;font-family:monospace;font-weight:700;letter-spacing:1px;flex-shrink:0">DEV</span>
+    <button onclick="devSkip('landing')" style="padding:6px 12px;border-radius:6px;border:1px solid #444;background:#1a1a1a;color:#aaa;font-size:12px;cursor:pointer;font-family:monospace;">Landing</button>
+    <button onclick="devSkip('mc')" style="padding:6px 12px;border-radius:6px;border:1px solid #444;background:#1a1a1a;color:#aaa;font-size:12px;cursor:pointer;font-family:monospace;">MC</button>
+    <button onclick="devSkip('sentences')" style="padding:6px 12px;border-radius:6px;border:1px solid #444;background:#1a1a1a;color:#aaa;font-size:12px;cursor:pointer;font-family:monospace;">Sentences</button>
+    <button onclick="devSkip('stories')" style="padding:6px 12px;border-radius:6px;border:1px solid #444;background:#1a1a1a;color:#aaa;font-size:12px;cursor:pointer;font-family:monospace;">Stories</button>
+    <button onclick="devSkip('results')" style="padding:6px 12px;border-radius:6px;border:1px solid #444;background:#1a1a1a;color:#aaa;font-size:12px;cursor:pointer;font-family:monospace;">Results</button>
+    <button onclick="el('dev-skip-bar').remove()" style="padding:6px 12px;border-radius:6px;border:1px solid #555;background:#2a1a1a;color:#e05c5c;font-size:12px;cursor:pointer;font-family:monospace;margin-left:auto;">✕ Hide</button>
+  </div>
+  <script src="js/app.js"></script>
+</body>
+</html>

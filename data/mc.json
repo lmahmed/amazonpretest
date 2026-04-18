@@ -1,0 +1,1102 @@
+[
+  {
+    "statement": "I just got promoted at work!",
+    "choices": [
+      "That's amazing, congratulations!",
+      "Promotions are usually announced by managers.",
+      "I need to buy more milk later."
+    ],
+    "correct": 0,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One option is a dry fact about how promotions work \u2014 not something anyone says in response to good news. The other is completely unrelated."
+  },
+  {
+    "statement": "My daughter just won her first swimming race.",
+    "choices": [
+      "She must be so proud of herself!",
+      "My keyboard keeps sticking on the letter E.",
+      "My bicycle has a flat tyre."
+    ],
+    "correct": 0,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "The other two options are completely unrelated to what was just said \u2014 neither would make sense as a response in any conversation."
+  },
+  {
+    "statement": "I finally passed my driving test after three attempts.",
+    "choices": [
+      "Driving tests include both written and practical sections.",
+      "My neighbour just painted his fence.",
+      "That must feel like such a relief!"
+    ],
+    "correct": 2,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One describes what a driving test involves \u2014 not a response to someone passing theirs. The other is completely off topic."
+  },
+  {
+    "statement": "We just bought our first house!",
+    "choices": [
+      "Houses typically require a mortgage to purchase.",
+      "The post office closes at five.",
+      "How exciting, you must be thrilled!"
+    ],
+    "correct": 2,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a general financial fact about buying houses \u2014 not a reaction to someone's exciting news. The other is completely unrelated."
+  },
+  {
+    "statement": "My son got straight A's this semester.",
+    "choices": [
+      "Grades are awarded at the end of each academic term.",
+      "My bicycle has a flat tyre.",
+      "That is something to be really proud of!"
+    ],
+    "correct": 2,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a general fact about how grading works \u2014 not a response to a proud parent. The other has nothing to do with the conversation."
+  },
+  {
+    "statement": "I just finished writing my first novel.",
+    "choices": [
+      "Novels typically take several years to write and publish.",
+      "Wow, that must have taken so much work!",
+      "I left my scarf on the train last week."
+    ],
+    "correct": 1,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a publishing fact that nobody says in response to someone's personal achievement. The other is completely unrelated."
+  },
+  {
+    "statement": "My sister just got engaged last night!",
+    "choices": [
+      "Engagement rings date back to ancient Rome.",
+      "I need to call my landlord this week.",
+      "Congratulations, that is wonderful news!"
+    ],
+    "correct": 2,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a historical fact about engagement rings \u2014 not a reaction to exciting news. The other has nothing to do with the conversation."
+  },
+  {
+    "statement": "I ran my first marathon yesterday.",
+    "choices": [
+      "That is incredible, how do you feel?",
+      "Marathons were first run in ancient Greece.",
+      "I cannot find a pen anywhere in this house."
+    ],
+    "correct": 0,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a historical fact about marathons that nobody says in response to a personal achievement. The other is completely off topic."
+  },
+  {
+    "statement": "I just got accepted into my dream university!",
+    "choices": [
+      "You must be absolutely over the moon!",
+      "My keyboard keeps sticking on the letter E.",
+      "I need a haircut soon."
+    ],
+    "correct": 0,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "The other two options are completely unrelated to what was just said \u2014 neither would make sense as a response in any conversation."
+  },
+  {
+    "statement": "My team won the championship game last night.",
+    "choices": [
+      "I keep forgetting to buy batteries.",
+      "That is fantastic, you all worked so hard!",
+      "I keep forgetting my reusable bag."
+    ],
+    "correct": 1,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "The other two options are completely unrelated to what was just said \u2014 neither would make sense as a response in any conversation."
+  },
+  {
+    "statement": "I just spilled coffee all over my laptop.",
+    "choices": [
+      "Oh no, is it still working?",
+      "My printer ran out of ink this morning.",
+      "I cannot find a pen anywhere in this house."
+    ],
+    "correct": 0,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "The other two options are completely unrelated to what was just said \u2014 neither would make sense as a response in any conversation."
+  },
+  {
+    "statement": "My car broke down on the highway this morning.",
+    "choices": [
+      "Highways are designed to handle high volumes of traffic.",
+      "That sounds really stressful, are you okay?",
+      "I forgot to water the plants again."
+    ],
+    "correct": 1,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a road engineering fact that nobody says in response to someone's bad morning. The other is completely off topic."
+  },
+  {
+    "statement": "I lost my wallet somewhere at the mall today.",
+    "choices": [
+      "Oh no, did you try the lost and found?",
+      "Most malls have a lost property office on site.",
+      "My printer ran out of ink this morning."
+    ],
+    "correct": 0,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a general fact about malls \u2014 not the same as actually helping someone find their wallet. The other is completely unrelated."
+  },
+  {
+    "statement": "I've had a terrible headache all day long.",
+    "choices": [
+      "Headaches are usually felt behind the eyes or temples.",
+      "I need to call my landlord this week.",
+      "You should rest and drink some water."
+    ],
+    "correct": 2,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is an anatomical fact about headaches that nobody says in response to someone's pain. The other has nothing to do with the conversation."
+  },
+  {
+    "statement": "My flight just got cancelled without any warning.",
+    "choices": [
+      "Planes carry hundreds of passengers on a single flight.",
+      "My keyboard keeps sticking on the letter E.",
+      "That is so frustrating, I'm sorry!"
+    ],
+    "correct": 2,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a random fact about aircraft \u2014 not a response to someone's travel crisis. The other is completely unrelated."
+  },
+  {
+    "statement": "I burned my hand on the stove this morning.",
+    "choices": [
+      "I left my scarf on the train last week.",
+      "Ouch, make sure you run it under cold water!",
+      "My shoelace broke on the way here."
+    ],
+    "correct": 1,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "The other two options are completely unrelated to what was just said \u2014 neither would make sense as a response in any conversation."
+  },
+  {
+    "statement": "I got completely soaked walking to work today.",
+    "choices": [
+      "Rain falls when water droplets form in storm clouds.",
+      "My shoelace broke on the way here.",
+      "That sounds miserable, you must be freezing!"
+    ],
+    "correct": 2,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a weather science fact \u2014 not a response to someone being miserable and wet. The other is completely off topic."
+  },
+  {
+    "statement": "I failed my exam even though I studied all week.",
+    "choices": [
+      "Exams are typically marked by the subject teacher.",
+      "I lost my favourite pen somewhere.",
+      "That's so disappointing, don't give up though!"
+    ],
+    "correct": 2,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a general fact about how exams work \u2014 not a response to someone's disappointment. The other has nothing to do with the conversation."
+  },
+  {
+    "statement": "My dog chewed up my brand new shoes.",
+    "choices": [
+      "Oh no, are they completely ruined?",
+      "Dogs have 42 teeth and strong jaw muscles.",
+      "I need to iron my shirt for tomorrow."
+    ],
+    "correct": 0,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is an animal fact about dogs that nobody says in response to someone's frustration. The other is completely unrelated."
+  },
+  {
+    "statement": "I've been stuck in traffic for over two hours.",
+    "choices": [
+      "Traffic moves in one direction on a one-way street.",
+      "My favourite mug cracked in the dishwasher.",
+      "That is awful, I hope you get moving soon."
+    ],
+    "correct": 2,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a road fact that nobody says in response to someone venting about being stuck. The other has nothing to do with the conversation."
+  },
+  {
+    "statement": "I found fifty dollars in my old jacket pocket.",
+    "choices": [
+      "Jacket pockets are lined with different materials.",
+      "Ha, that's the best feeling ever!",
+      "I keep forgetting my reusable bag."
+    ],
+    "correct": 1,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a clothing fact that nobody says in response to finding surprise money. The other is completely unrelated."
+  },
+  {
+    "statement": "A stranger paid for my coffee this morning.",
+    "choices": [
+      "I cannot find a pen anywhere in this house.",
+      "That is such a lovely thing to do!",
+      "I have been craving a biscuit all morning."
+    ],
+    "correct": 1,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "The other two options are completely unrelated to what was just said \u2014 neither would make sense as a response in any conversation."
+  },
+  {
+    "statement": "My neighbor left fresh tomatoes on my doorstep.",
+    "choices": [
+      "Tomatoes grow best in warm sunny conditions.",
+      "I have been craving a biscuit all morning.",
+      "How sweet of them, that was so thoughtful!"
+    ],
+    "correct": 2,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a gardening fact about tomatoes \u2014 not a response to a kind neighbour. The other is completely unrelated."
+  },
+  {
+    "statement": "I ran into my childhood friend at the airport.",
+    "choices": [
+      "Airports handle millions of passengers every year.",
+      "My chair at work is very uncomfortable.",
+      "What a coincidence, after all this time!"
+    ],
+    "correct": 2,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a statistics fact about airports \u2014 not a response to a happy coincidence. The other has nothing to do with the conversation."
+  },
+  {
+    "statement": "My cat brought a bird inside through the cat door.",
+    "choices": [
+      "Cat doors are designed to open with a magnetic collar.",
+      "My desk lamp stopped working yesterday.",
+      "Oh no, what did you do with it?"
+    ],
+    "correct": 2,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a product fact about cat doors that nobody says in response to the situation. The other is completely unrelated."
+  },
+  {
+    "statement": "It started snowing in the middle of April.",
+    "choices": [
+      "Snow forms when moisture freezes high in the atmosphere.",
+      "I need a haircut soon.",
+      "That is so unusual for this time of year!"
+    ],
+    "correct": 2,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a meteorology fact \u2014 not a response to someone commenting on unusual weather. The other has nothing to do with the conversation."
+  },
+  {
+    "statement": "My boss gave the whole team the afternoon off.",
+    "choices": [
+      "I keep forgetting to buy batteries.",
+      "That was really generous, how did that happen?",
+      "My favourite mug cracked in the dishwasher."
+    ],
+    "correct": 1,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "The other two options are completely unrelated to what was just said \u2014 neither would make sense as a response in any conversation."
+  },
+  {
+    "statement": "I won a gift card in a raffle I forgot I entered.",
+    "choices": [
+      "Ha, free money is always a nice surprise!",
+      "Raffles are regulated differently depending on the country.",
+      "I forgot to water the plants again."
+    ],
+    "correct": 0,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a legal fact about raffles \u2014 not a response to someone's lucky win. The other has nothing to do with the conversation."
+  },
+  {
+    "statement": "My plant that I thought was dead started growing again.",
+    "choices": [
+      "It's alive! That is such a happy surprise!",
+      "Plants enter a dormant state when conditions are unfavourable.",
+      "I ran out of shampoo this morning."
+    ],
+    "correct": 0,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a botany fact \u2014 not a response to someone's happy surprise. The other is completely unrelated."
+  },
+  {
+    "statement": "The restaurant gave us a free dessert at the end.",
+    "choices": [
+      "Restaurants sometimes offer complimentary items to regular customers.",
+      "My neighbour got a new car last week.",
+      "Oh how nice, what did they bring you?"
+    ],
+    "correct": 2,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a restaurant policy fact that nobody says in response to someone sharing a nice experience. The other has nothing to do with the conversation."
+  },
+  {
+    "statement": "I can't find my keys anywhere in the house.",
+    "choices": [
+      "I have been meaning to clean my car.",
+      "I left my scarf on the train last week.",
+      "Did you check your coat pockets?"
+    ],
+    "correct": 2,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "The other two options are completely unrelated to what was just said \u2014 neither would make sense as a response in any conversation."
+  },
+  {
+    "statement": "I haven't eaten anything since this morning.",
+    "choices": [
+      "The human body can go several weeks without food.",
+      "The post office closes at five.",
+      "You must be starving, let's get you something!"
+    ],
+    "correct": 2,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a biology fact that nobody says in response to someone who is hungry. The other has nothing to do with the conversation."
+  },
+  {
+    "statement": "I've been waiting for the bus for forty minutes.",
+    "choices": [
+      "My phone needs charging already.",
+      "I need a haircut soon.",
+      "That is such a long wait, is it always this late?"
+    ],
+    "correct": 2,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "The other two options are completely unrelated to what was just said \u2014 neither would make sense as a response in any conversation."
+  },
+  {
+    "statement": "I locked myself out of my apartment again.",
+    "choices": [
+      "My neighbour just painted his fence.",
+      "I forgot to return that library book.",
+      "Oh no, do you have a spare key anywhere?"
+    ],
+    "correct": 2,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "The other two options are completely unrelated to what was just said \u2014 neither would make sense as a response in any conversation."
+  },
+  {
+    "statement": "The supermarket was out of everything I needed.",
+    "choices": [
+      "Supermarkets restock their shelves overnight to avoid disruption.",
+      "My neighbour just painted his fence.",
+      "That is so annoying, did you try another store?"
+    ],
+    "correct": 2,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a retail operations fact \u2014 not a response to someone's frustrating shop trip. The other is completely unrelated."
+  },
+  {
+    "statement": "I've been on hold with customer service for an hour.",
+    "choices": [
+      "That's ridiculous, have you tried their website?",
+      "Customer service centres handle thousands of calls each day.",
+      "I have a dentist appointment on Thursday."
+    ],
+    "correct": 0,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a call centre fact that nobody says in response to someone venting about being on hold. The other has nothing to do with the conversation."
+  },
+  {
+    "statement": "My alarm didn't go off and I overslept.",
+    "choices": [
+      "Most smartphone alarms have a snooze function built in.",
+      "Oh no, were you late for anything important?",
+      "The bus stop is just around the corner."
+    ],
+    "correct": 1,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a phone feature fact \u2014 not a response to someone's stressful morning. The other is completely unrelated."
+  },
+  {
+    "statement": "I can't remember where I parked my car.",
+    "choices": [
+      "The bus stop is just around the corner.",
+      "That is so stressful, do you remember which level?",
+      "My printer ran out of ink this morning."
+    ],
+    "correct": 1,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "The other two options are completely unrelated to what was just said \u2014 neither would make sense as a response in any conversation."
+  },
+  {
+    "statement": "The pizza arrived cold after an hour and a half.",
+    "choices": [
+      "That's not acceptable, you should call and complain!",
+      "Pizza delivery boxes are insulated to retain heat.",
+      "My printer ran out of ink this morning."
+    ],
+    "correct": 0,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a packaging fact about pizza delivery \u2014 not a response to someone's bad experience. The other is completely unrelated."
+  },
+  {
+    "statement": "I've been trying to open this jar for ten minutes.",
+    "choices": [
+      "Glass jars are vacuum sealed during the manufacturing process.",
+      "Here, let me try, sometimes a fresh grip helps!",
+      "I think it might rain later tonight."
+    ],
+    "correct": 1,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a production fact about jars \u2014 not a response to someone struggling. The other has nothing to do with the conversation."
+  },
+  {
+    "statement": "It is absolutely freezing outside today.",
+    "choices": [
+      "The coldest temperature ever recorded was in Antarctica.",
+      "Make sure you bundle up before you go out!",
+      "There are three pigeons on my windowsill."
+    ],
+    "correct": 1,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a climate record fact that nobody says in response to someone complaining about the cold. The other is completely unrelated."
+  },
+  {
+    "statement": "The weather has been so beautiful all week.",
+    "choices": [
+      "I think it might rain later tonight.",
+      "I know, I've been loving it, perfect for being outside!",
+      "I have been craving a biscuit all morning."
+    ],
+    "correct": 1,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "The other two options are completely unrelated to what was just said \u2014 neither would make sense as a response in any conversation."
+  },
+  {
+    "statement": "There's a huge storm coming in tonight apparently.",
+    "choices": [
+      "Make sure you stay safe and stay indoors!",
+      "The television in the kitchen is broken.",
+      "I need to iron my shirt for tomorrow."
+    ],
+    "correct": 0,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "The other two options are completely unrelated to what was just said \u2014 neither would make sense as a response in any conversation."
+  },
+  {
+    "statement": "It's been raining nonstop for three days now.",
+    "choices": [
+      "Rainfall is measured in millimetres using a rain gauge.",
+      "Ugh, I know, I'm so ready for some sunshine!",
+      "I have been meaning to clean my car."
+    ],
+    "correct": 1,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a measurement fact about rainfall \u2014 not a response to someone complaining about the weather. The other is completely unrelated."
+  },
+  {
+    "statement": "The sun is finally out after all that grey weather.",
+    "choices": [
+      "The sun is approximately 93 million miles from the earth.",
+      "What a relief, it's been so gloomy lately!",
+      "My shoelace broke on the way here."
+    ],
+    "correct": 1,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is an astronomy fact that nobody says in response to someone enjoying the sunshine. The other has nothing to do with the conversation."
+  },
+  {
+    "statement": "I tried a new restaurant last night and it was incredible.",
+    "choices": [
+      "I need to iron my shirt for tomorrow.",
+      "Oh really, what kind of food was it?",
+      "I keep forgetting my reusable bag."
+    ],
+    "correct": 1,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "The other two options are completely unrelated to what was just said \u2014 neither would make sense as a response in any conversation."
+  },
+  {
+    "statement": "I've been craving pizza all day long.",
+    "choices": [
+      "Then let's just order one, life is short!",
+      "Pizza is one of the most popular foods in the world.",
+      "I need to iron my shirt for tomorrow."
+    ],
+    "correct": 0,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a popularity fact about pizza \u2014 not a response to someone expressing a craving. The other is completely unrelated."
+  },
+  {
+    "statement": "I accidentally put salt in my coffee instead of sugar.",
+    "choices": [
+      "I cannot find a pen anywhere in this house.",
+      "I need to buy more milk later.",
+      "Ha, what did it taste like? That sounds awful!"
+    ],
+    "correct": 2,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "The other two options are completely unrelated to what was just said \u2014 neither would make sense as a response in any conversation."
+  },
+  {
+    "statement": "The cake my mum made for my birthday was amazing.",
+    "choices": [
+      "That is so sweet, your mum is so thoughtful!",
+      "The bus stop is just around the corner.",
+      "My neighbour got a new car last week."
+    ],
+    "correct": 0,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "The other two options are completely unrelated to what was just said \u2014 neither would make sense as a response in any conversation."
+  },
+  {
+    "statement": "I haven't had a cup of tea all day and I feel off.",
+    "choices": [
+      "I forgot to water the plants again.",
+      "Well then go make one right now, that'll fix it!",
+      "The bus stop is just around the corner."
+    ],
+    "correct": 1,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "The other two options are completely unrelated to what was just said \u2014 neither would make sense as a response in any conversation."
+  },
+  {
+    "statement": "I barely slept last night, I'm exhausted.",
+    "choices": [
+      "I have been meaning to call my mum.",
+      "You should try to get a nap in if you can!",
+      "I have been craving a biscuit all morning."
+    ],
+    "correct": 1,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "The other two options are completely unrelated to what was just said \u2014 neither would make sense as a response in any conversation."
+  },
+  {
+    "statement": "I think I'm coming down with a cold.",
+    "choices": [
+      "Oh no, make sure you rest and stay warm!",
+      "Colds are caused by viruses rather than cold temperatures.",
+      "My phone needs charging already."
+    ],
+    "correct": 0,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a medical fact about colds \u2014 not a response to someone feeling unwell. The other is completely unrelated."
+  },
+  {
+    "statement": "My back has been killing me all week.",
+    "choices": [
+      "You should see a doctor if it's been that long!",
+      "Back pain is one of the most common reasons people see a doctor.",
+      "I forgot to water the plants again."
+    ],
+    "correct": 0,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a medical statistics fact \u2014 not a response to someone in pain. The other is completely unrelated."
+  },
+  {
+    "statement": "I finally got a full night of sleep for once.",
+    "choices": [
+      "Sleep helps the brain consolidate memories and process information.",
+      "That must feel incredible, what a difference!",
+      "I ran out of shampoo this morning."
+    ],
+    "correct": 1,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a sleep science fact that nobody says in response to someone sharing relief. The other has nothing to do with the conversation."
+  },
+  {
+    "statement": "I've had the hiccups for over twenty minutes now.",
+    "choices": [
+      "Hiccups are caused by involuntary spasms of the diaphragm.",
+      "Try holding your breath, that usually works!",
+      "My neighbour got a new car last week."
+    ],
+    "correct": 1,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is an anatomy fact about hiccups that nobody says in response to someone suffering from them. The other is completely unrelated."
+  },
+  {
+    "statement": "I'm thinking of quitting my job and starting my own business.",
+    "choices": [
+      "I think it might rain later tonight.",
+      "That is a big step, what kind of business?",
+      "I keep forgetting my reusable bag."
+    ],
+    "correct": 1,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "The other two options are completely unrelated to what was just said \u2014 neither would make sense as a response in any conversation."
+  },
+  {
+    "statement": "We're going to Hawaii for two weeks next month!",
+    "choices": [
+      "I need to buy more milk later.",
+      "That sounds absolutely amazing, you're going to love it!",
+      "I cannot find a pen anywhere in this house."
+    ],
+    "correct": 1,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "The other two options are completely unrelated to what was just said \u2014 neither would make sense as a response in any conversation."
+  },
+  {
+    "statement": "I've decided to start going to the gym every morning.",
+    "choices": [
+      "Most gyms are open from early morning until late at night.",
+      "Good for you, how are you finding it so far?",
+      "My uncle lives in a different city."
+    ],
+    "correct": 1,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a gym hours fact \u2014 not a response to someone sharing a new goal. The other is completely unrelated."
+  },
+  {
+    "statement": "We're thinking of getting a dog this summer.",
+    "choices": [
+      "Dogs were domesticated from wolves thousands of years ago.",
+      "The television in the kitchen is broken.",
+      "Oh how exciting, what breed are you thinking?"
+    ],
+    "correct": 2,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a history fact about dogs that nobody says in response to someone considering a pet. The other has nothing to do with the conversation."
+  },
+  {
+    "statement": "I'm going to learn Spanish this year no matter what.",
+    "choices": [
+      "My phone needs charging already.",
+      "That's a great goal, have you started yet?",
+      "There are three pigeons on my windowsill."
+    ],
+    "correct": 1,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "The other two options are completely unrelated to what was just said \u2014 neither would make sense as a response in any conversation."
+  },
+  {
+    "statement": "I waved back at someone who wasn't waving at me.",
+    "choices": [
+      "Ha, that's so painful, what did you do after?",
+      "Waving is used as a greeting in most Western cultures.",
+      "I have a dentist appointment on Thursday."
+    ],
+    "correct": 0,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a cultural fact about waving \u2014 not a response to someone's embarrassing moment. The other has nothing to do with the conversation."
+  },
+  {
+    "statement": "I walked into a glass door at the shopping centre.",
+    "choices": [
+      "Glass doors are required to have safety markings by law.",
+      "Ouch! Are you okay? That must have been embarrassing!",
+      "The bus stop is just around the corner."
+    ],
+    "correct": 1,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a safety regulation fact that nobody says in response to someone's embarrassing accident. The other is completely unrelated."
+  },
+  {
+    "statement": "I called my teacher mum in front of the whole class.",
+    "choices": [
+      "Ha, that is so embarrassing, what did she say?",
+      "Teachers typically hold a degree in their subject area.",
+      "I left my scarf on the train last week."
+    ],
+    "correct": 0,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a teacher qualification fact \u2014 not a response to someone's embarrassing story. The other has nothing to do with the conversation."
+  },
+  {
+    "statement": "I sent an angry text to the wrong person by mistake.",
+    "choices": [
+      "Oh no, who did you send it to? Did they reply?",
+      "Text messages are transmitted through mobile network towers.",
+      "My printer ran out of ink this morning."
+    ],
+    "correct": 0,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a telecommunications fact that nobody says in response to someone's social disaster. The other is completely unrelated."
+  },
+  {
+    "statement": "I sang along loudly to a song and got the words wrong.",
+    "choices": [
+      "Song lyrics are protected by copyright law in most countries.",
+      "I think it might rain later tonight.",
+      "Ha, everyone does that, what song was it?"
+    ],
+    "correct": 2,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a copyright fact about songs \u2014 not a response to someone's funny moment. The other has nothing to do with the conversation."
+  },
+  {
+    "statement": "My best friend is moving to another country next month.",
+    "choices": [
+      "That must be bittersweet, how are you feeling about it?",
+      "My phone needs charging already.",
+      "I have a dentist appointment on Thursday."
+    ],
+    "correct": 0,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "The other two options are completely unrelated to what was just said \u2014 neither would make sense as a response in any conversation."
+  },
+  {
+    "statement": "My parents are coming to visit for two weeks.",
+    "choices": [
+      "That's nice, do you have anything planned for them?",
+      "Extended family visits are most common during school holidays.",
+      "I need to call my landlord this week."
+    ],
+    "correct": 0,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a general observation about family visits \u2014 not a response to someone sharing their specific plans. The other is completely unrelated."
+  },
+  {
+    "statement": "I had a huge argument with my roommate last night.",
+    "choices": [
+      "Shared living arrangements require clear communication and boundaries.",
+      "My keyboard keeps sticking on the letter E.",
+      "I'm sorry to hear that, are you both okay now?"
+    ],
+    "correct": 2,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a general advice statement about shared living \u2014 not a personal response to someone's conflict. The other has nothing to do with the conversation."
+  },
+  {
+    "statement": "My coworker brought homemade food in for everyone today.",
+    "choices": [
+      "Homemade food is generally considered healthier than processed food.",
+      "I have been meaning to clean my car.",
+      "That is so kind, what did they make?"
+    ],
+    "correct": 2,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a nutrition fact that nobody says in response to someone sharing a sweet workplace moment. The other is completely unrelated."
+  },
+  {
+    "statement": "I haven't seen my grandparents in over a year.",
+    "choices": [
+      "Grandparents often play an important role in childcare.",
+      "That is such a long time, are you planning a visit?",
+      "My shoelace broke on the way here."
+    ],
+    "correct": 1,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a general family role fact \u2014 not a response to someone expressing that they miss their grandparents. The other is completely unrelated."
+  },
+  {
+    "statement": "My cat knocked my full glass of water off the desk.",
+    "choices": [
+      "I lost my favourite pen somewhere.",
+      "My phone needs charging already.",
+      "Cats are notorious for doing that, did it get your laptop?"
+    ],
+    "correct": 2,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "The other two options are completely unrelated to what was just said \u2014 neither would make sense as a response in any conversation."
+  },
+  {
+    "statement": "My dog learned how to open the back door by himself.",
+    "choices": [
+      "That is so clever, and probably a little terrifying!",
+      "Dogs can be trained to perform complex tasks with repetition.",
+      "I need to iron my shirt for tomorrow."
+    ],
+    "correct": 0,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a dog training fact \u2014 not a response to someone's specific story about their clever dog. The other has nothing to do with the conversation."
+  },
+  {
+    "statement": "My goldfish died after eight years. I'm really sad.",
+    "choices": [
+      "I'm so sorry, eight years is a long time, he was family!",
+      "I need to call my landlord this week.",
+      "My printer ran out of ink this morning."
+    ],
+    "correct": 0,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "The other two options are completely unrelated to what was just said \u2014 neither would make sense as a response in any conversation."
+  },
+  {
+    "statement": "My dog is scared of the vacuum cleaner.",
+    "choices": [
+      "My favourite mug cracked in the dishwasher.",
+      "I think it might rain later tonight.",
+      "Ha, most dogs are, it's such a common thing!"
+    ],
+    "correct": 2,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "The other two options are completely unrelated to what was just said \u2014 neither would make sense as a response in any conversation."
+  },
+  {
+    "statement": "I'm thinking of adopting a cat from the shelter.",
+    "choices": [
+      "Animal shelters rehome thousands of cats every year.",
+      "That is wonderful, there are so many cats that need homes!",
+      "My desk lamp stopped working yesterday."
+    ],
+    "correct": 1,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a shelter statistics fact \u2014 not a response to someone considering adopting. The other has nothing to do with the conversation."
+  },
+  {
+    "statement": "I have a huge presentation at work tomorrow and I'm nervous.",
+    "choices": [
+      "You'll do great, just breathe and you'll be fine!",
+      "Presentations are more effective when supported by visual aids.",
+      "I need a haircut soon."
+    ],
+    "correct": 0,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a presentation tips fact that nobody says in response to someone expressing nerves. The other is completely unrelated."
+  },
+  {
+    "statement": "My boss just gave me some really great feedback today.",
+    "choices": [
+      "I need to buy more milk later.",
+      "That's really encouraging, you must feel good!",
+      "My bicycle has a flat tyre."
+    ],
+    "correct": 1,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "The other two options are completely unrelated to what was just said \u2014 neither would make sense as a response in any conversation."
+  },
+  {
+    "statement": "I have three deadlines all due on the same day.",
+    "choices": [
+      "Project management tools help teams track multiple deadlines.",
+      "I forgot to water the plants again.",
+      "That sounds incredibly stressful, which one are you doing first?"
+    ],
+    "correct": 2,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a project management fact that nobody says in response to someone overwhelmed with work. The other is completely unrelated."
+  },
+  {
+    "statement": "I just had the longest meeting of my entire life.",
+    "choices": [
+      "I need a haircut soon.",
+      "The post office closes at five.",
+      "Ha, what was it about? Was it at least useful?"
+    ],
+    "correct": 2,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "The other two options are completely unrelated to what was just said \u2014 neither would make sense as a response in any conversation."
+  },
+  {
+    "statement": "My teacher gave the whole class extra homework over the weekend.",
+    "choices": [
+      "That is so unfair, what subject is it for?",
+      "Most schools have a homework policy set by the head teacher.",
+      "My neighbour got a new car last week."
+    ],
+    "correct": 0,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a school policy fact that nobody says in response to someone complaining about homework. The other is completely unrelated."
+  },
+  {
+    "statement": "Everything I wanted at the store was sold out.",
+    "choices": [
+      "The bus stop is just around the corner.",
+      "That is so frustrating, did you try ordering it online?",
+      "My favourite mug cracked in the dishwasher."
+    ],
+    "correct": 1,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "The other two options are completely unrelated to what was just said \u2014 neither would make sense as a response in any conversation."
+  },
+  {
+    "statement": "I accidentally bought two of the same thing online.",
+    "choices": [
+      "Ha, can you return one of them at least?",
+      "Online retailers process millions of orders every single day.",
+      "The post office closes at five."
+    ],
+    "correct": 0,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a scale fact about online shopping that nobody says in response to someone's mistake. The other is completely unrelated."
+  },
+  {
+    "statement": "I found something I wanted for half the original price.",
+    "choices": [
+      "The price of groceries has gone up a lot lately.",
+      "That's a great deal, you should definitely get it!",
+      "My uncle lives in a different city."
+    ],
+    "correct": 1,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One talks about prices going up \u2014 the opposite direction of a deal \u2014 and is not a response to someone's find. The other is completely unrelated."
+  },
+  {
+    "statement": "My credit card got declined at the checkout today.",
+    "choices": [
+      "Oh no, that's embarrassing, what did you do?",
+      "I lost my favourite pen somewhere.",
+      "My shoelace broke on the way here."
+    ],
+    "correct": 0,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "The other two options are completely unrelated to what was just said \u2014 neither would make sense as a response in any conversation."
+  },
+  {
+    "statement": "I just paid off my student loan finally.",
+    "choices": [
+      "Student loans accrue interest from the first year of study.",
+      "That must feel so good, what a weight off your shoulders!",
+      "My neighbour just painted his fence."
+    ],
+    "correct": 1,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a loan interest fact \u2014 not a response to someone celebrating a huge financial milestone. The other is completely unrelated."
+  },
+  {
+    "statement": "I started painting as a hobby and I love it.",
+    "choices": [
+      "Oil paint takes significantly longer to dry than acrylic paint.",
+      "I have a dentist appointment on Thursday.",
+      "That is great, has anyone seen your work yet?"
+    ],
+    "correct": 2,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a materials fact about paint that nobody says in response to someone sharing a new hobby. The other has nothing to do with the conversation."
+  },
+  {
+    "statement": "I've been reading the same book for three months now.",
+    "choices": [
+      "The average novel contains between seventy and one hundred thousand words.",
+      "The bus stop is just around the corner.",
+      "Ha, is it really long or just not gripping you?"
+    ],
+    "correct": 2,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a publishing fact about book length \u2014 not a response to someone's reading struggle. The other is completely unrelated."
+  },
+  {
+    "statement": "I cooked a full three course meal from scratch tonight.",
+    "choices": [
+      "I forgot to return that library book.",
+      "My shoelace broke on the way here.",
+      "That is impressive, what did you make?"
+    ],
+    "correct": 2,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "The other two options are completely unrelated to what was just said \u2014 neither would make sense as a response in any conversation."
+  },
+  {
+    "statement": "I've been taking a morning walk every day this week.",
+    "choices": [
+      "Good for you, how are you finding it so far?",
+      "Walking at a brisk pace burns approximately three hundred calories per hour.",
+      "My printer ran out of ink this morning."
+    ],
+    "correct": 0,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a calorie fact about walking \u2014 not a response to someone sharing a new habit. The other is completely unrelated."
+  },
+  {
+    "statement": "I just finished a puzzle that took me three weeks.",
+    "choices": [
+      "Jigsaw puzzles were first produced in the eighteenth century.",
+      "I think it might rain later tonight.",
+      "Three weeks! That last piece must have felt so satisfying!"
+    ],
+    "correct": 2,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a history fact about puzzles that nobody says in response to someone's accomplishment. The other has nothing to do with the conversation."
+  },
+  {
+    "statement": "I just got back from the most amazing holiday.",
+    "choices": [
+      "International travel requires a valid passport and sometimes a visa.",
+      "There are three pigeons on my windowsill.",
+      "Oh wow, where did you go?"
+    ],
+    "correct": 2,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a travel requirement fact \u2014 not a response to someone sharing their holiday experience. The other is completely unrelated."
+  },
+  {
+    "statement": "I dropped my phone and the screen cracked.",
+    "choices": [
+      "My neighbour just painted his fence.",
+      "I need a haircut soon.",
+      "Oh no, is it still working at least?"
+    ],
+    "correct": 2,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "The other two options are completely unrelated to what was just said \u2014 neither would make sense as a response in any conversation."
+  },
+  {
+    "statement": "I have been learning guitar for a month and I love it.",
+    "choices": [
+      "The television in the kitchen is broken.",
+      "That is great, can you play anything yet?",
+      "I left my scarf on the train last week."
+    ],
+    "correct": 1,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "The other two options are completely unrelated to what was just said \u2014 neither would make sense as a response in any conversation."
+  },
+  {
+    "statement": "My neighbours had a party until four in the morning.",
+    "choices": [
+      "Noise complaints can be filed with the local council.",
+      "That is so inconsiderate, did you say anything?",
+      "I have been meaning to clean my car."
+    ],
+    "correct": 1,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a local government fact that nobody says in response to someone complaining about their neighbours. The other is completely unrelated."
+  },
+  {
+    "statement": "I finally cleaned out my wardrobe after two years.",
+    "choices": [
+      "That must feel so good, how much did you get rid of?",
+      "Clothing experts recommend decluttering your wardrobe twice a year.",
+      "My shoelace broke on the way here."
+    ],
+    "correct": 0,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a lifestyle advice fact that nobody says in response to someone sharing their personal accomplishment. The other is completely unrelated."
+  },
+  {
+    "statement": "My train was cancelled and there were no alternatives.",
+    "choices": [
+      "That is awful, how did you end up getting home?",
+      "Train cancellations are most commonly caused by signal failures.",
+      "I lost my favourite pen somewhere."
+    ],
+    "correct": 0,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a rail operations fact \u2014 not a response to someone stranded with no way home. The other has nothing to do with the conversation."
+  },
+  {
+    "statement": "I stayed up too late watching films and I regret it now.",
+    "choices": [
+      "Ha, was it worth it at least?",
+      "I left my scarf on the train last week.",
+      "My desk lamp stopped working yesterday."
+    ],
+    "correct": 0,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "The other two options are completely unrelated to what was just said \u2014 neither would make sense as a response in any conversation."
+  },
+  {
+    "statement": "My neighbour just knocked and brought me homemade bread.",
+    "choices": [
+      "That is so sweet, what a lovely thing to do!",
+      "Bread has been baked by humans for at least fourteen thousand years.",
+      "My favourite mug cracked in the dishwasher."
+    ],
+    "correct": 0,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a history fact about bread that nobody says in response to a kind neighbourly gesture. The other is completely unrelated."
+  },
+  {
+    "statement": "I have been sneezing all morning and cannot stop.",
+    "choices": [
+      "Sneezing expels air from the lungs at over one hundred miles per hour.",
+      "Oh no, do you think you are coming down with something?",
+      "I keep forgetting my reusable bag."
+    ],
+    "correct": 1,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a biology fact about sneezing that nobody says in response to someone suffering. The other has nothing to do with the conversation."
+  },
+  {
+    "statement": "I finally got around to fixing that squeaky door.",
+    "choices": [
+      "Only took you forever! Does it feel satisfying?",
+      "Door hinges are typically made from steel or brass alloy.",
+      "My desk lamp stopped working yesterday."
+    ],
+    "correct": 0,
+    "explanation_correct": "This is the only response that directly relates to what was just said.",
+    "explanation_wrong": "One is a materials fact about door hinges \u2014 not a response to someone's sense of accomplishment. The other is completely unrelated."
+  }
+]
