@@ -15,6 +15,7 @@ const state = {
   storySet: [],
   recognition: null,
   isRecording: false,
+  sessionId: 0,
   transcript: '',
   originalText: '',
   audioContext: null,
@@ -58,32 +59,38 @@ function shuffle(arr) {
 function show(id) { document.getElementById(id).classList.add('active'); }
 function hide(id) { document.getElementById(id).classList.remove('active'); }
 function showScreen(id) {
+  audioCancelled = true;
+  // Only invalidate session when navigating away from the question screen
+  state.sessionId++;
   window.speechSynthesis.cancel();
   stopReplayAudio();
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   window.scrollTo(0, 0);
+  setTimeout(() => { audioCancelled = false; }, 50);
 }
 
 function el(id) { return document.getElementById(id); }
 
 // ─── TTS ─────────────────────────────────────────────────────────
-function speak(text, onEnd) {
+let audioCancelled = false;
+
+function speak(text) {
   return new Promise((resolve) => {
+    if (audioCancelled) { resolve(); return; }
     window.speechSynthesis.cancel();
     const utt = new SpeechSynthesisUtterance(text);
     utt.rate = 0.92;
     utt.pitch = 1.0;
     utt.lang = 'en-US';
 
-    // Try to pick a natural voice
     const voices = window.speechSynthesis.getVoices();
     const preferred = voices.find(v =>
       v.lang.startsWith('en') && (v.name.includes('Samantha') || v.name.includes('Google US') || v.name.includes('Alex') || v.name.includes('Karen'))
     ) || voices.find(v => v.lang.startsWith('en'));
     if (preferred) utt.voice = preferred;
 
-    utt.onend = () => { if (onEnd) onEnd(); resolve(); };
+    utt.onend = () => resolve();
     utt.onerror = () => resolve();
     window.speechSynthesis.speak(utt);
     state.ttsUtterance = utt;
@@ -249,13 +256,48 @@ window.confirmMic = async function(passed) {
 function checkReady() {
   if (audioChecked && micChecked) {
     el('start-btn').classList.add('ready');
+    el('practice-btn').classList.add('ready');
   }
 }
 
 el('start-btn').addEventListener('click', startTest);
 
+el('practice-btn').addEventListener('click', () => {
+  if (!el('practice-btn').classList.contains('ready')) return;
+  showScreen('screen-practice');
+});
+
+// ─── PRACTICE MODE ────────────────────────────────────────────────
+let practiceMode = false;
+
+window.startPractice = function(section) {
+  practiceMode = true;
+
+  // Build full shuffled banks
+  state.mcSet        = shuffle([...DATA.mc]);
+  state.sentenceSet  = shuffle([...DATA.sentences]);
+  state.storySet     = shuffle([...DATA.stories]);
+  state.mcScore      = 0;
+  state.mcTotal      = 0;
+  state.questionIndex = 0;
+  state.sentenceIndex = 0;
+  state.storyIndex    = 0;
+
+  if (section === 'mc') {
+    state.section = 0;
+    showIntro(0);
+  } else if (section === 'sentences') {
+    state.section = 1;
+    showIntro(1);
+  } else if (section === 'stories') {
+    state.section = 2;
+    showIntro(2);
+  }
+};
+
 // ─── START TEST ───────────────────────────────────────────────────
 function startTest() {
+  practiceMode = false;
   // Always random
   state.mcSet        = shuffle([...DATA.mc]).slice(0, 6);
   state.sentenceSet  = shuffle([...DATA.sentences]).slice(0, 8);
@@ -313,7 +355,7 @@ const SECTION_INFO = [
 
 function showIntro(sectionIndex) {
   const info = SECTION_INFO[sectionIndex];
-  el('intro-badge').textContent = info.badge;
+  el('intro-badge').textContent = practiceMode ? 'Practice Mode' : info.badge;
   el('intro-title').textContent = info.title;
   el('intro-desc').textContent = info.desc;
 
@@ -322,7 +364,8 @@ function showIntro(sectionIndex) {
     `<div class="rule-item"><span class="rule-icon">${r.icon}</span><span>${r.text}</span></div>`
   ).join('');
 
-  el('intro-next-btn').textContent = info.btnText;
+  el('intro-next-btn').textContent = practiceMode ? `Start Practicing` : info.btnText;
+  el('intro-back-wrap').style.display = practiceMode ? 'block' : 'none';
   el('intro-next-btn').onclick = () => {
     state.section = sectionIndex;
     if (sectionIndex === 0) loadMCQuestion();
@@ -337,15 +380,19 @@ function showIntro(sectionIndex) {
 // ─── QUESTION SCREEN HELPERS ──────────────────────────────────────
 function setHeader(label, current, total) {
   el('q-section-label').textContent = label;
-  el('q-counter').textContent = `${current} / ${total}`;
-  el('q-progress').style.width = `${((current - 1) / total) * 100}%`;
+  el('q-counter').textContent = practiceMode ? `#${current}` : `${current} / ${total}`;
+  el('q-progress').style.width = practiceMode ? '0%' : `${((current - 1) / total) * 100}%`;
+  el('q-stop-practice').style.display = practiceMode ? 'inline' : 'none';
 }
 
 function resetQuestionUI() {
+  audioCancelled = true;
+  state.questionSession++;
   window.speechSynthesis.cancel();
   stopReplayAudio();
   stopRecording();
   clearTimers();
+  setTimeout(() => { audioCancelled = false; }, 50);
   // Hide all dynamic sections
   el('play-wrap').style.display = '';
   el('choices-wrap').classList.remove('show');
@@ -435,6 +482,7 @@ async function playMCAudio(q) {
 }
 
 function startMCTimer(q) {
+  const sid = state.sessionId;
   el('timer-wrap').classList.add('show');
   el('timer-label-text').textContent = 'Time to answer';
   state.timerSeconds = 8;
@@ -450,23 +498,24 @@ function startMCTimer(q) {
     el('timer-num').textContent = state.timerSeconds;
     if (state.timerSeconds <= 0) {
       clearTimers();
-      timeUpMC(q);
+      if (state.sessionId === sid) timeUpMC(q, sid);
     }
   }, 1000);
 }
 
-function timeUpMC(q) {
+function timeUpMC(q, sid) {
   document.querySelectorAll('.choice-btn').forEach(b => b.disabled = true);
-  revealMCAnswer(q, -1); // -1 = timed out, no selection
+  revealMCAnswer(q, -1, sid);
 }
 
 function selectMCChoice(idx) {
+  const sid = state.sessionId;
   clearTimers();
   document.querySelectorAll('.choice-btn').forEach(b => b.disabled = true);
-  revealMCAnswer(state.mcSet[state.questionIndex], idx);
+  revealMCAnswer(state.mcSet[state.questionIndex], idx, sid);
 }
 
-function revealMCAnswer(q, selectedIdx) {
+function revealMCAnswer(q, selectedIdx, sid) {
   state.mcTotal++;
   const correct = selectedIdx === q.correct;
   if (correct) state.mcScore++;
@@ -514,16 +563,26 @@ function revealMCAnswer(q, selectedIdx) {
   el('reveal-wrap').classList.add('show');
   el('timer-wrap').classList.remove('show');
 
-  // Next button
-  el('q-next-btn').textContent = state.questionIndex + 1 < state.mcSet.length ? 'Next Question →' : 'Continue to Part 2 →';
+  // Increment MC completion counter — only if session still active
+  if (state.sessionId === sid) firestoreIncrement('stats/mc');
+  el('q-next-btn').textContent = practiceMode ? 'Next Question →' : (state.questionIndex + 1 < state.mcSet.length ? 'Next Question →' : 'Continue to Part 2 →');
   el('q-next-btn').classList.add('show');
   el('q-next-btn').onclick = () => {
     state.questionIndex++;
-    if (state.questionIndex < state.mcSet.length) {
+    if (practiceMode) {
+      // Loop back to start of bank when exhausted
+      if (state.questionIndex >= state.mcSet.length) {
+        state.mcSet = shuffle([...DATA.mc]);
+        state.questionIndex = 0;
+      }
       loadMCQuestion();
     } else {
-      state.questionIndex = 0;
-      showIntro(1);
+      if (state.questionIndex < state.mcSet.length) {
+        loadMCQuestion();
+      } else {
+        state.questionIndex = 0;
+        showIntro(1);
+      }
     }
   };
 }
@@ -565,6 +624,7 @@ async function playSentenceAudio(sentence) {
 }
 
 async function startSentenceRecording() {
+  const sid = state.sessionId;
   el('visualizer-label-text').textContent = 'Opening mic...';
   el('visualizer-wrap').classList.add('show');
   el('done-btn').classList.add('show');
@@ -576,7 +636,6 @@ async function startSentenceRecording() {
   finalTranscriptBuffer = '';
   interimTranscriptBuffer = '';
 
-  // Initialize both simultaneously — avoids mid-recording mic conflict
   await Promise.all([
     startVisualizer(),
     new Promise(res => {
@@ -591,7 +650,6 @@ async function startSentenceRecording() {
   void el('timer-track').offsetWidth;
   el('timer-track').classList.add('run-10');
 
-  // Auto-stop after 10 seconds
   (async () => {
     while (state.timerSeconds > 0 && state.isRecording) {
       await pause(1000);
@@ -602,7 +660,7 @@ async function startSentenceRecording() {
     if (state.isRecording) {
       state.isRecording = false;
       await stopRecording();
-      revealSentence();
+      revealSentence(sid);
     }
   })();
 }
@@ -612,10 +670,10 @@ el('done-btn').addEventListener('click', async () => {
   state.isRecording = false;
   el('timer-wrap').classList.remove('show');
   await stopRecording();
-  revealSentence();
+  revealSentence(state.sessionId);
 });
 
-function revealSentence() {
+function revealSentence(sid) {
   el('visualizer-wrap').classList.remove('show');
   el('done-btn').classList.remove('show');
   el('timer-wrap').classList.remove('show');
@@ -641,16 +699,25 @@ function revealSentence() {
 
   el('reveal-wrap').classList.add('show');
 
-  const isLast = state.sentenceIndex + 1 >= state.sentenceSet.length;
-  el('q-next-btn').textContent = isLast ? 'Continue to Part 3 →' : 'Next Sentence →';
+  if (state.sessionId === sid) firestoreIncrement('stats/sentence');
+
+  el('q-next-btn').textContent = 'Next Sentence →';
   el('q-next-btn').classList.add('show');
   el('q-next-btn').onclick = () => {
     state.sentenceIndex++;
-    if (state.sentenceIndex < state.sentenceSet.length) {
+    if (practiceMode) {
+      if (state.sentenceIndex >= state.sentenceSet.length) {
+        state.sentenceSet = shuffle([...DATA.sentences]);
+        state.sentenceIndex = 0;
+      }
       loadSentenceQuestion();
     } else {
-      state.sentenceIndex = 0;
-      showIntro(2);
+      if (state.sentenceIndex < state.sentenceSet.length) {
+        loadSentenceQuestion();
+      } else {
+        state.sentenceIndex = 0;
+        showIntro(2);
+      }
     }
   };
 }
@@ -722,6 +789,7 @@ async function playStoryAudio(story) {
 }
 
 async function startStoryRecording(story) {
+  const sid = state.sessionId;
   el('visualizer-label-text').textContent = 'Opening mic...';
   el('visualizer-wrap').classList.add('show');
   el('timer-label-text').textContent = 'Time to retell';
@@ -732,7 +800,6 @@ async function startStoryRecording(story) {
   finalTranscriptBuffer = '';
   interimTranscriptBuffer = '';
 
-  // Initialize both simultaneously — avoids mid-recording mic conflict
   await Promise.all([
     startVisualizer(),
     new Promise(res => {
@@ -741,14 +808,12 @@ async function startStoryRecording(story) {
     })
   ]);
 
-  // Show timer only after both are ready
   el('visualizer-label-text').textContent = 'Retell the story now — 30 seconds';
   el('timer-wrap').classList.add('show');
   resetTimerBar();
   void el('timer-track').offsetWidth;
   el('timer-track').classList.add('run-30');
 
-  // Use async countdown instead of setInterval so we can await stopRecording
   (async () => {
     while (state.timerSeconds > 0 && state.isRecording) {
       await pause(1000);
@@ -760,12 +825,12 @@ async function startStoryRecording(story) {
       state.isRecording = false;
       clearTimers();
       await stopRecording();
-      revealStory(story);
+      revealStory(story, sid);
     }
   })();
 }
 
-function revealStory(story) {
+function revealStory(story, sid) {
   el('visualizer-wrap').classList.remove('show');
   el('timer-wrap').classList.remove('show');
 
@@ -799,15 +864,24 @@ function revealStory(story) {
 
   el('reveal-wrap').classList.add('show');
 
-  const isLast = state.storyIndex + 1 >= state.storySet.length;
-  el('q-next-btn').textContent = isLast ? 'See Results →' : 'Next Story →';
+  if (state.sessionId === sid) firestoreIncrement('stats/story');
+
+  el('q-next-btn').textContent = practiceMode ? 'Next Story →' : (state.storyIndex + 1 >= state.storySet.length ? 'See Results →' : 'Next Story →');
   el('q-next-btn').classList.add('show');
   el('q-next-btn').onclick = () => {
     state.storyIndex++;
-    if (state.storyIndex < state.storySet.length) {
+    if (practiceMode) {
+      if (state.storyIndex >= state.storySet.length) {
+        state.storySet = shuffle([...DATA.stories]);
+        state.storyIndex = 0;
+      }
       loadStoryQuestion();
     } else {
-      showResults();
+      if (state.storyIndex < state.storySet.length) {
+        loadStoryQuestion();
+      } else {
+        showResults();
+      }
     }
   };
 }
@@ -1072,21 +1146,7 @@ function showResults() {
   el('results-msg').textContent = msg;
 
   // Increment completion counter in Firestore
-  fetch('https://firestore.googleapis.com/v1/projects/prehiretest-58208/databases/(default)/documents:commit', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      writes: [{
-        transform: {
-          document: 'projects/prehiretest-58208/databases/(default)/documents/stats/global',
-          fieldTransforms: [{
-            fieldPath: 'completions',
-            increment: { integerValue: 1}
-          }]
-        }
-      }]
-    })
-  }).catch(() => {}); // fail silently — don't break the results screen
+  firestoreIncrement('stats/global');
 
   showScreen('screen-results');
 }
@@ -1133,6 +1193,24 @@ window.devSkip = function(section) {
     showResults();
   }
 };
+function firestoreIncrement(docPath) {
+  fetch(`https://firestore.googleapis.com/v1/projects/prehiretest-58208/databases/(default)/documents:commit`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      writes: [{
+        transform: {
+          document: `projects/prehiretest-58208/databases/(default)/documents/${docPath}`,
+          fieldTransforms: [{
+            fieldPath: 'completions',
+            increment: { integerValue: 1 }
+          }]
+        }
+      }]
+    })
+  }).catch(() => {});
+}
+
 window.togglePrivacy = function() {
   const notice = el('privacy-notice');
   const btn = el('privacy-toggle');
@@ -1141,7 +1219,17 @@ window.togglePrivacy = function() {
   btn.textContent = isHidden ? 'Hide Privacy Notice' : 'View Privacy Notice';
 };
 
-function pause(ms) { return new Promise(res => setTimeout(res, ms)); }
+function pause(ms) {
+  return new Promise(res => {
+    if (audioCancelled) { res(); return; }
+    const t = setTimeout(res, ms);
+    // Poll for cancellation
+    const check = setInterval(() => {
+      if (audioCancelled) { clearTimeout(t); clearInterval(check); res(); }
+    }, 50);
+    setTimeout(() => clearInterval(check), ms + 100);
+  });
+}
 
 // ─── INIT ─────────────────────────────────────────────────────────
 window.addEventListener('load', async () => {

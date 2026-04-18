@@ -80,7 +80,41 @@
       </div>
 
       <button class="start-btn" id="start-btn">Start Test →</button>
+      <button class="start-btn" id="practice-btn" style="margin-top:10px;background:var(--surface2);border:1.5px solid var(--border2);color:var(--text);box-shadow:none;">Practice a Section</button>
 
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════
+       SCREEN 1B: PRACTICE PICKER
+  ══════════════════════════════════════════════════ -->
+  <div id="screen-practice" class="screen">
+    <div style="flex:1;display:flex;align-items:center;justify-content:center;padding:40px 20px;">
+      <div class="intro-inner" style="text-align:center;">
+
+        <div class="section-badge">
+          <span class="dot"></span>
+          <span>Practice Mode</span>
+        </div>
+
+        <h2 class="intro-title">Which section?</h2>
+        <p class="intro-desc">Questions cycle continuously — practice as long as you like.</p>
+
+        <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:28px;">
+          <button onclick="startPractice('mc')" class="next-btn" style="background:var(--surface2);border:1.5px solid var(--border2);color:var(--text);">
+            💬 Choose a Response
+          </button>
+          <button onclick="startPractice('sentences')" class="next-btn" style="background:var(--surface2);border:1.5px solid var(--border2);color:var(--text);">
+            🎤 Repeat a Sentence
+          </button>
+          <button onclick="startPractice('stories')" class="next-btn" style="background:var(--surface2);border:1.5px solid var(--border2);color:var(--text);">
+            📖 Retell a Story
+          </button>
+        </div>
+
+        <button onclick="showScreen('screen-landing')" style="background:none;border:none;color:var(--muted);font-family:var(--font-body);font-size:13px;cursor:pointer;text-decoration:underline;text-underline-offset:3px;">← Back</button>
+
+      </div>
     </div>
   </div>
 
@@ -102,6 +136,9 @@
         <div class="intro-rules" id="intro-rules"></div>
 
         <button class="next-btn" id="intro-next-btn">Begin Part 1</button>
+        <div id="intro-back-wrap" style="display:none;text-align:center;margin-top:14px;">
+          <button onclick="showScreen('screen-practice')" style="background:none;border:none;color:var(--muted);font-family:var(--font-body);font-size:13px;cursor:pointer;text-decoration:underline;text-underline-offset:3px;">← Change Section</button>
+        </div>
 
       </div>
     </div>
@@ -116,6 +153,7 @@
     <div class="q-header">
       <span class="q-section-label" id="q-section-label">Choose a Response</span>
       <span class="q-counter" id="q-counter">1 / 6</span>
+      <span id="q-stop-practice" style="display:none;font-size:11px;color:var(--muted);cursor:pointer;text-decoration:underline;text-underline-offset:3px;" onclick="showScreen('screen-practice')">✕ Stop</span>
     </div>
 
     <!-- Progress bar -->
