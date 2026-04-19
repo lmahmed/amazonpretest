@@ -387,7 +387,7 @@ function setHeader(label, current, total) {
 
 function resetQuestionUI() {
   audioCancelled = true;
-  state.questionSession++;
+  state.sessionId++;
   window.speechSynthesis.cancel();
   stopReplayAudio();
   stopRecording();
@@ -448,6 +448,7 @@ function loadMCQuestion() {
 }
 
 async function playMCAudio(q) {
+  const sid = state.sessionId; // capture when user clicks play
   const pb = el('play-btn');
   pb.disabled = true;
   pb.classList.add('playing');
@@ -456,11 +457,9 @@ async function playMCAudio(q) {
   el('playing-label').classList.add('show');
   el('playing-label').textContent = 'Playing statement...';
 
-  // Speak statement
   await speak(q.statement);
   await pause(400);
 
-  // Speak each choice
   const letters = ['A', 'B', 'C'];
   for (let i = 0; i < q.choices.length; i++) {
     el('playing-label').textContent = `Playing choice ${letters[i]}...`;
@@ -468,7 +467,6 @@ async function playMCAudio(q) {
     if (i < q.choices.length - 1) await pause(300);
   }
 
-  // Audio done — show choices, start timer
   pb.classList.remove('playing');
   pb.classList.add('played');
   pb.innerHTML = '✓';
@@ -478,17 +476,15 @@ async function playMCAudio(q) {
   el('choices-wrap').classList.add('show');
   document.querySelectorAll('.choice-btn').forEach(b => b.removeAttribute('disabled'));
 
-  startMCTimer(q);
+  startMCTimer(q, sid);
 }
 
-function startMCTimer(q) {
-  const sid = state.sessionId;
+function startMCTimer(q, sid) {
   el('timer-wrap').classList.add('show');
   el('timer-label-text').textContent = 'Time to answer';
   state.timerSeconds = 8;
   el('timer-num').textContent = state.timerSeconds;
 
-  // CSS animation
   resetTimerBar();
   void el('timer-track').offsetWidth;
   el('timer-track').classList.add('run-8');
@@ -516,6 +512,8 @@ function selectMCChoice(idx) {
 }
 
 function revealMCAnswer(q, selectedIdx, sid) {
+  if (state.sessionId !== sid) return;
+  firestoreIncrement('stats/mc');
   state.mcTotal++;
   const correct = selectedIdx === q.correct;
   if (correct) state.mcScore++;
@@ -564,7 +562,6 @@ function revealMCAnswer(q, selectedIdx, sid) {
   el('timer-wrap').classList.remove('show');
 
   // Increment MC completion counter — only if session still active
-  if (state.sessionId === sid) firestoreIncrement('stats/mc');
   el('q-next-btn').textContent = practiceMode ? 'Next Question →' : (state.questionIndex + 1 < state.mcSet.length ? 'Next Question →' : 'Continue to Part 2 →');
   el('q-next-btn').classList.add('show');
   el('q-next-btn').onclick = () => {
@@ -601,6 +598,7 @@ function loadSentenceQuestion() {
 }
 
 async function playSentenceAudio(sentence) {
+  const sid = state.sessionId; // capture when user clicks play
   const pb = el('play-btn');
   pb.disabled = true;
   pb.classList.add('playing');
@@ -609,7 +607,7 @@ async function playSentenceAudio(sentence) {
   el('playing-label').classList.add('show');
   el('playing-label').textContent = 'Listen carefully...';
 
-  warmMicStream(); // start warming while audio plays
+  warmMicStream();
 
   await speak(sentence);
 
@@ -618,13 +616,11 @@ async function playSentenceAudio(sentence) {
   pb.innerHTML = '✓';
   el('playing-label').classList.remove('show');
 
-  // Auto-open mic
   await pause(300);
-  startSentenceRecording();
+  startSentenceRecording(sid);
 }
 
-async function startSentenceRecording() {
-  const sid = state.sessionId;
+async function startSentenceRecording(sid) {
   el('visualizer-label-text').textContent = 'Opening mic...';
   el('visualizer-wrap').classList.add('show');
   el('done-btn').classList.add('show');
@@ -674,6 +670,8 @@ el('done-btn').addEventListener('click', async () => {
 });
 
 function revealSentence(sid) {
+  if (state.sessionId !== sid) return;
+  firestoreIncrement('stats/sentence');
   el('visualizer-wrap').classList.remove('show');
   el('done-btn').classList.remove('show');
   el('timer-wrap').classList.remove('show');
@@ -699,7 +697,6 @@ function revealSentence(sid) {
 
   el('reveal-wrap').classList.add('show');
 
-  if (state.sessionId === sid) firestoreIncrement('stats/sentence');
 
   el('q-next-btn').textContent = 'Next Sentence →';
   el('q-next-btn').classList.add('show');
@@ -759,6 +756,7 @@ function loadStoryQuestion() {
 }
 
 async function playStoryAudio(story) {
+  const sid = state.sessionId; // capture when user clicks play
   const pb = el('play-btn');
   pb.disabled = true;
   pb.classList.add('playing');
@@ -774,7 +772,7 @@ async function playStoryAudio(story) {
   await speak('The story will now be repeated.');
   await pause(600);
 
-  warmMicStream(); // warm during second telling — plenty of time before recording starts
+  warmMicStream();
   el('playing-label').textContent = 'Second telling...';
   await speak(story.text);
 
@@ -783,13 +781,11 @@ async function playStoryAudio(story) {
   pb.innerHTML = '✓';
   el('playing-label').classList.remove('show');
 
-  // Auto-open mic + 30s timer
   await pause(400);
-  startStoryRecording(story);
+  startStoryRecording(story, sid);
 }
 
-async function startStoryRecording(story) {
-  const sid = state.sessionId;
+async function startStoryRecording(story, sid) {
   el('visualizer-label-text').textContent = 'Opening mic...';
   el('visualizer-wrap').classList.add('show');
   el('timer-label-text').textContent = 'Time to retell';
@@ -831,6 +827,8 @@ async function startStoryRecording(story) {
 }
 
 function revealStory(story, sid) {
+  if (state.sessionId !== sid) return;
+  firestoreIncrement('stats/story');
   el('visualizer-wrap').classList.remove('show');
   el('timer-wrap').classList.remove('show');
 
@@ -864,7 +862,6 @@ function revealStory(story, sid) {
 
   el('reveal-wrap').classList.add('show');
 
-  if (state.sessionId === sid) firestoreIncrement('stats/story');
 
   el('q-next-btn').textContent = practiceMode ? 'Next Story →' : (state.storyIndex + 1 >= state.storySet.length ? 'See Results →' : 'Next Story →');
   el('q-next-btn').classList.add('show');
