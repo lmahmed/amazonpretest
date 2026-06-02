@@ -79,8 +79,22 @@
         </div>
       </div>
 
-      <button class="start-btn" id="start-btn">Start Test →</button>
-      <button class="start-btn" id="practice-btn" style="margin-top:10px;background:var(--surface2);border:1.5px solid var(--border2);color:var(--text);box-shadow:none;">Practice a Section</button>
+      <div style="position:relative;width:100%;overflow:visible;">
+        <button class="start-btn" id="start-btn"
+          onmouseenter="if(!this.classList.contains('ready')) document.getElementById('start-tooltip').style.display='block'"
+          onmouseleave="document.getElementById('start-tooltip').style.display='none'">Start Test →</button>
+        <div id="start-tooltip" style="display:none;position:absolute;top:calc(100% + 6px);left:50%;transform:translateX(-50%);background:var(--surface3);border:1px solid var(--border2);border-radius:8px;padding:8px 14px;font-size:12px;color:var(--muted2);white-space:nowrap;pointer-events:none;z-index:100;">
+          ⚠️ Complete the audio and mic test first
+        </div>
+      </div>
+      <div style="position:relative;width:100%;margin-top:10px;overflow:visible;">
+        <button class="start-btn" id="practice-btn" style="background:var(--surface2);border:1.5px solid var(--border2);color:var(--text);box-shadow:none;"
+          onmouseenter="if(!this.classList.contains('ready')) document.getElementById('practice-tooltip').style.display='block'"
+          onmouseleave="document.getElementById('practice-tooltip').style.display='none'">Practice a Section</button>
+        <div id="practice-tooltip" style="display:none;position:absolute;top:calc(100% + 6px);left:50%;transform:translateX(-50%);background:var(--surface3);border:1px solid var(--border2);border-radius:8px;padding:8px 14px;font-size:12px;color:var(--muted2);white-space:nowrap;pointer-events:none;z-index:100;">
+          ⚠️ Complete the audio and mic test first
+        </div>
+      </div>
 
     </div>
   </div>

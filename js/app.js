@@ -18,6 +18,7 @@ const state = {
   sessionId: 0,
   transcript: '',
   originalText: '',
+  currentQuestion: null,
   audioContext: null,
   analyser: null,
   animFrameId: null,
@@ -260,7 +261,10 @@ function checkReady() {
   }
 }
 
-el('start-btn').addEventListener('click', startTest);
+el('start-btn').addEventListener('click', () => {
+  if (!el('start-btn').classList.contains('ready')) return;
+  startTest();
+});
 
 el('practice-btn').addEventListener('click', () => {
   if (!el('practice-btn').classList.contains('ready')) return;
@@ -433,18 +437,27 @@ function loadMCQuestion() {
   resetQuestionUI();
   const q = state.mcSet[state.questionIndex];
   setHeader('Choose a Response', state.questionIndex + 1, state.mcSet.length);
-
+ 
+  // Shuffle choice order for display — don't mutate original
+  const indices = shuffle([0, 1, 2]);
+  const displayChoices = indices.map(i => q.choices[i]);
+  const displayCorrect = indices.indexOf(q.correct);
+ 
+  // Build display question object for audio and reveal
+  const qDisplay = { ...q, choices: displayChoices, correct: displayCorrect };
+  state.currentQuestion = qDisplay;
+ 
   // Build choices — letters only, no text (user heard them via audio)
   const letters = ['A', 'B', 'C'];
-  el('choices-wrap').innerHTML = q.choices.map((c, i) =>
+  el('choices-wrap').innerHTML = displayChoices.map((c, i) =>
     `<button class="choice-btn" data-index="${i}" onclick="selectMCChoice(${i})" disabled>
       <span class="choice-letter">${letters[i]}</span>
     </button>`
   ).join('');
-
+ 
   el('play-hint').textContent = 'Tap to hear the statement and choices';
-
-  el('play-btn').onclick = () => playMCAudio(q);
+ 
+  el('play-btn').onclick = () => playMCAudio(qDisplay);
 }
 
 async function playMCAudio(q) {
@@ -508,7 +521,7 @@ function selectMCChoice(idx) {
   const sid = state.sessionId;
   clearTimers();
   document.querySelectorAll('.choice-btn').forEach(b => b.disabled = true);
-  revealMCAnswer(state.mcSet[state.questionIndex], idx, sid);
+  revealMCAnswer(state.currentQuestion, idx, sid);
 }
 
 function revealMCAnswer(q, selectedIdx, sid) {

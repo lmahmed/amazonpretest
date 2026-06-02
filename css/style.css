@@ -225,15 +225,15 @@ body::after {
   font-family: var(--font-display);
   font-size: 16px;
   font-weight: 700;
-  cursor: pointer;
+  cursor: not-allowed;
   transition: all 0.2s;
   letter-spacing: 0.3px;
   -webkit-tap-highlight-color: transparent;
   opacity: 0.4;
-  pointer-events: none;
+  pointer-events: auto;
 }
 
-.start-btn.ready { opacity: 1; pointer-events: all; }
+.start-btn.ready { opacity: 1; pointer-events: all; cursor: pointer; }
 .start-btn.ready:hover { background: #ffb93d; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(245,166,35,0.3); }
 .start-btn.ready:active { transform: translateY(0); }
 
