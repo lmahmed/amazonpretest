@@ -60,6 +60,10 @@ function shuffle(arr) {
 function show(id) { document.getElementById(id).classList.add('active'); }
 function hide(id) { document.getElementById(id).classList.remove('active'); }
 function showScreen(id) {
+  // Hide theme toggle when question is displayed
+  document.getElementById('theme-toggle').style.display = 
+  id === 'screen-question' ? 'none' : 'flex';
+
   audioCancelled = true;
   // Only invalidate session when navigating away from the question screen
   state.sessionId++;
@@ -1247,6 +1251,7 @@ window.addEventListener('load', async () => {
   // Preload voices
   window.speechSynthesis.getVoices();
   showScreen('screen-landing');
+  setTheme(localStorage.getItem('theme') || 'auto');
 });
 
 // Reload voices on change (needed for some browsers)

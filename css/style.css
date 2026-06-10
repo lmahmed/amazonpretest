@@ -18,10 +18,53 @@
   --muted2:   #9090a8;
   --success:  #3ecf8e;
   --error:    #e05c5c;
+  --logo-glow: rgba(245,166,35,0.3);
+  --disclaimer-bg: rgba(245,166,35,0.07);
+  --disclaimer-border: rgba(245,166,35,0.18);
+  --privacy-bg: rgba(62,207,207,0.05);
+  --privacy-border: rgba(62,207,207,0.18);
+  --ambient-glow: rgba(245,166,35,0.05);
+  --theme-btn-color: #6b6b80;
+  --theme-btn-active-bg: #2a2a38;
+  --theme-btn-active-color: #eeeef5;
   --radius:   14px;
   --radius-sm: 8px;
   --font-display: 'Familjen Grotesk', sans-serif;
   --font-body:    'DM Sans', sans-serif;
+}
+
+:root[data-theme="light"] {
+  --bg:           #f8f9fa; /* Soft off-white */
+  --surface:      #ffffff; /* Pure white */
+  --surface2:     #f1f3f5; /* Light gray */
+  --surface3:     #e9ecef; /* Medium-light gray */
+  --border:       #ced4da; /* Clean border line */
+  --border2:      #ced4da; /* Stronger border line */
+  
+  /* High-contrast light mode accents */
+  --accent:       #d97706; 
+  --accent2:      #0891b2; 
+  --accent3:      #dc2626; 
+
+  --text:         #121214; /* Deep charcoal */
+  --muted:        #6c757d; /* Soft gray text */
+  --muted2:       #495057; /* Darker gray text */
+  --success:      #16a34a; /* Accessible green */
+  --error:        #dc2626; /* Accessible red */
+
+  --logo-glow: rgba(217,119,6,.5);
+
+  --disclaimer-bg: rgba(217,119,6,0.08);
+  --disclaimer-border: rgba(217,119,6,0.25);
+
+  --privacy-bg: rgba(8,145,178,0.08);
+  --privacy-border: rgba(8,145,178,0.25);
+
+  --ambient-glow: rgba(217,119,6,0.2);
+
+  --theme-btn-color: #6c757d;
+  --theme-btn-active-bg: #dee2e6;
+  --theme-btn-active-color: #121214;
 }
 
 html { font-size: 16px; -webkit-text-size-adjust: 100%; }
@@ -56,9 +99,25 @@ body::after {
   transform: translateX(-50%);
   width: 80vw;
   height: 60vh;
-  background: radial-gradient(ellipse, rgba(245,166,35,0.05) 0%, transparent 70%);
+  background: radial-gradient(ellipse, var(--ambient-glow) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
+}
+
+/* ─── THEME TOGGLE ─────────────────────────────────────────────────── */
+.theme-btn {
+  background: none;
+  border: none;
+  border-radius: 16px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--theme-btn-color);
+  transition: all 0.2s;
+}
+.theme-btn.active {
+  background: var(--theme-btn-active-bg);
+  color: var(--theme-btn-active-color);
 }
 
 /* ─── LAYOUT ─────────────────────────────────────────────────── */
@@ -82,7 +141,7 @@ body::after {
 #screen-landing {
   align-items: center;
   justify-content: center;
-  padding: 40px 20px;
+  padding: 60px 40px 20px;
   text-align: center;
 }
 
@@ -98,7 +157,7 @@ body::after {
   justify-content: center;
   font-size: 26px;
   margin: 0 auto 24px;
-  box-shadow: 0 0 40px rgba(245,166,35,0.3);
+  box-shadow: 0 0 40px var(--logo-glow);
   animation: float 3s ease-in-out infinite;
 }
 
@@ -131,8 +190,8 @@ body::after {
 }
 
 .disclaimer {
-  background: rgba(245,166,35,0.07);
-  border: 1px solid rgba(245,166,35,0.18);
+  background: var(--disclaimer-bg);
+  border: 1px solid var(--disclaimer-border);
   border-radius: var(--radius);
   padding: 14px 18px;
   font-size: 12px;

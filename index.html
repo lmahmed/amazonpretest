@@ -22,8 +22,36 @@
   <link rel="apple-touch-icon" href="images/favicon.svg">
 
   <link rel="stylesheet" href="css/style.css">
+
+  <script>
+    function setTheme(mode) {
+      localStorage.setItem('theme', mode);
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const resolved = mode === 'auto' ? (prefersDark ? 'dark' : 'light') : mode;
+      document.documentElement.setAttribute('data-theme', resolved);
+      const btn = document.getElementById('theme-' + mode);
+      if (btn) {
+        document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      }
+    }
+
+    // On load
+    const saved = localStorage.getItem('theme') || 'auto';
+    setTheme(saved);  
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+      if ((localStorage.getItem('theme') || 'auto') === 'auto') setTheme('auto');
+    });
+  </script>
 </head>
 <body>
+
+  <div id="theme-toggle" style="position:fixed;top:16px;right:16px;z-index:50;display:flex;gap:4px;background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:4px;">
+    <button onclick="setTheme('auto')" id="theme-auto" class="theme-btn">🖥️ Auto</button>
+    <button onclick="setTheme('light')" id="theme-light" class="theme-btn">☀️ Light</button>
+    <button onclick="setTheme('dark')" id="theme-dark" class="theme-btn">🌙 Dark</button>
+  </div>
 
   <!-- ══════════════════════════════════════════════════
        SCREEN 1: LANDING
@@ -46,7 +74,7 @@
         <button onclick="togglePrivacy()" id="privacy-toggle" style="background:none;border:none;color:var(--muted);font-family:var(--font-body);font-size:12px;cursor:pointer;text-decoration:underline;text-underline-offset:3px;">View Privacy Notice</button>
       </div>
       <div id="privacy-notice" style="display:none;margin-bottom:16px;">
-        <div class="disclaimer" style="border-color:rgba(62,207,207,0.18);background:rgba(62,207,207,0.05);">
+        <div class="disclaimer" style="border-color: var(--privacy-border);background: var(--privacy-bg);">
           <strong style="color:var(--accent2);">Privacy:</strong> This site does not store or collect any of your audio or personal data. Speech-to-text transcription is powered by your browser's built-in Web Speech API — in Chrome, this transmits your voice to Google's servers for processing, subject to <a href="https://policies.google.com/privacy" target="_blank" style="color:var(--accent2);">Google's Privacy Policy</a>. By using this tool you acknowledge that your voice may be sent to and processed by your browser vendor.
         </div>
       </div>
